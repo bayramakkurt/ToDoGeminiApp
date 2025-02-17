@@ -5,8 +5,8 @@ from pydantic import BaseModel
 from passlib.context import CryptContext
 from sqlalchemy.orm import Session
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from database import SessionLocal
-from models import User
+from ..database import SessionLocal
+from ..models import User
 from jose import JWTError,jwt
 from fastapi.templating import Jinja2Templates
 
@@ -15,7 +15,7 @@ router=APIRouter(
     tags=["Kullanıcı Giriş İşlemleri"] #Bu router'ın tag'ını belirliyoruz.
 )
 
-templates=Jinja2Templates(directory="templates")
+templates=Jinja2Templates(directory="app/templates")
 
 SECRET_KEY="dv1hyoGQsV09jMF1htLibVWGG4sSPLGZTEgeaVRZCZG26OikBUyQLEHxi9gY6CTV"
 ALGORITHM="HS256"

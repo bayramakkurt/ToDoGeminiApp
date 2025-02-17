@@ -10,12 +10,12 @@ import markdown
 from bs4 import BeautifulSoup
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage,AIMessage
-from models import Base,Todo
-from database import engine,SessionLocal
+from ..models import Base,Todo
+from ..database import engine,SessionLocal
 from typing import Annotated
 from sqlalchemy.orm import Session
 from starlette import status
-from routers.auth import get_current_user
+from ..routers.auth import get_current_user
 from fastapi.templating import Jinja2Templates
 #Status kütüphanesi FastAPI'nin HTTP status kodlarını kullanabilmemizi sağlar.
 #BaseModel kütüphanesi Pydantic kütüphanesinden gelir ve Pydantic kütüphanesi veri doğrulama işlemlerinde kullanılır.
@@ -51,7 +51,7 @@ def get_db():
     finally:
         db.close() #db yi kapatıyoruz.
 
-templates=Jinja2Templates(directory="templates")
+templates=Jinja2Templates(directory="app/templates")
 
 db_dependency=Annotated[Session,Depends(get_db)] #db_dependency adında bir değişken oluşturuyoruz ve bu değişkenin tipi Session olacak.
 #Depends(get_db) ile get_db fonksiyonunu db_dependency değişkenine bağlıyoruz.
