@@ -138,6 +138,7 @@ async def create_todo(user:user_dependency,todo_request:TodoRequest,db:db_depend
     db.add(todo)
     db.commit()
 
+
 #TodoRequest ile veri doğrulama işlemlerini yapıyoruz.
 #db_todo=Todo(**todo_request.dict()) ile Todo tablosuna veri ekliyoruz.
 #db.add(db_todo) ile veritabanına veri ekliyoruz.
